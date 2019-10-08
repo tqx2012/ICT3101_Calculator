@@ -1,5 +1,8 @@
 using ICT3101_Calculator;
 using NUnit.Framework;
+using System;
+using System.IO;
+
 
 namespace ICT3101_Caculator.UnitTests
 {
@@ -87,5 +90,17 @@ namespace ICT3101_Caculator.UnitTests
             // Assert
             Assert.That(result, Is.EqualTo(15625));
         }
+
+        [Test]
+        public void MagicNumber()
+        {
+            // Act
+            double result = _calculator.GenMagicNum(5);
+            // Assert
+            Assert.That(result, Is.EqualTo(92281600));
+        }
+
+
+
     }
 }

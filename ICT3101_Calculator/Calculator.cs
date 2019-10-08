@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace ICT3101_Calculator
@@ -111,5 +112,31 @@ namespace ICT3101_Calculator
             }
             return result;
         }
+
+        public class FileReader
+        {
+            string text = System.IO.File.ReadAllText(@"D:/VisualStudio19/repos/ICT3101_Calculator/MagicNumbers.txt");
+            public string[] Read(string path)
+            {
+                return File.ReadAllLines(path);
+            }
+        }
+
+        public double GenMagicNum(double input)
+        {
+            double result = 0;
+            int choice = Convert.ToInt16(input);
+            //Dependency------------------------------
+            FileReader getTheMagic = new FileReader();
+            //----------------------------------------
+            string[] magicStrings = getTheMagic.Read("MagicNumbers.txt"); //92281600
+            if ((choice >= 0) && (choice < magicStrings.Length))
+            {
+                result = Convert.ToDouble(magicStrings[choice]);
+            }
+            result = (result > 0) ? (2 * result) : (-2 * result);
+            return result;
+        }
+
     }
 }
